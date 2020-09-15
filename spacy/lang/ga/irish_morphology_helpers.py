@@ -37,3 +37,25 @@ def deduplicate(word):
         return word[:-1]
     else:
         return word
+
+
+def uneclipse(word):
+    if word.lower()[:3] == "bhf":
+        return word[2:]
+    elif word.lower()[:2] in ['mb', 'gc', 'nd', 'ng', 'bp', 'dt']:
+        return word[1:]
+    elif word[:2] == 'n-' and word[2] in vowels:
+        return word[2:]
+    elif word[0] == 'n' and word.lower()[1] in vowels:
+        return word[1:]
+    else:
+        return word
+
+
+def unlenite(word):
+    lenitables = ['b', 'c', 'd', 'f', 'g', 'm', 'p', 's', 't']
+    tmp = word.lower()
+    if tmp[0] in lenitables and tmp[1] == 'h':
+        return word[0] + word[2:]
+    else:
+        return word
